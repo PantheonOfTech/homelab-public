@@ -2,6 +2,7 @@
 Sanitized mirror of the private engineering log. Newest first. Addressing uses RFC5737 doc ranges; hosts are role placeholders.
 
 ## 2026-07-03
+- Public CHANGELOG sanitized mirror synced; private + public matched at full history.
 - Changelog rebuilt as continuous log; full project history backfilled; append-only policy locked.
 
 ## 2026-06-28
