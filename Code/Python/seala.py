@@ -7,8 +7,9 @@
 #  Role: Header stamper for Python and shell files
 #  Runs: On demand
 #  Created: 2026-10-08
-#  Last Modified: 2026-10-12 17:30 CDT
+#  Last Modified: 2026-10-12 21:50 CDT
 #  Changelog (newest first):
+#    2026-10-12 21:50 CDT - v1.1.1: lint fixes for current ruff defaults (DTZ notes, executable bit); no behaviour change
 #    2026-10-12 17:30 CDT - v1.1: owner from SEALA_OWNER, git user.name or the login name (no longer hard-coded); lint pass
 #    2026-10-08 16:07 CDT - Initial version (v1.0), twin of Seala PowerShell module v1.2.0
 # ================================================================
@@ -96,7 +97,7 @@ def iso_date(value):
     for fmt in ("%m/%d/%Y", "%m/%d/%y", "%Y-%m-%d", "%m/%d/%Y %H:%M",
                 "%Y-%m-%d %H:%M", "%m/%d/%Y %I:%M %p"):
         try:
-            return datetime.strptime(v, fmt).strftime("%Y-%m-%d")
+            return datetime.strptime(v, fmt).strftime("%Y-%m-%d")  # noqa: DTZ007 - date-only reformat, no timezone involved
         except ValueError:
             pass
     return v
@@ -119,7 +120,7 @@ def created_fallback(path):
     ts = getattr(st, "st_birthtime", None)
     if ts is None:
         ts = st.st_ctime if os.name == "nt" else st.st_mtime
-    return datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+    return datetime.fromtimestamp(ts).strftime("%Y-%m-%d")  # noqa: DTZ006 - the local calendar date is intended
 
 
 def read_text(path):

@@ -7,8 +7,9 @@
 #  Role: Read-only lab sweep: ping, ports, Wazuh agent state
 #  Runs: On demand, or scheduled (exit code 1 = attention needed)
 #  Created: 2026-10-08
-#  Last Modified: 2026-10-12 17:30 CDT
+#  Last Modified: 2026-10-12 21:50 CDT
 #  Changelog (newest first):
+#    2026-10-12 21:50 CDT - v1.0.2: lint fixes for current ruff defaults (redundant int(), executable bit); no behaviour change
 #    2026-10-12 17:30 CDT - v1.0.1: lint pass (exception chaining, explicit subprocess check, f-strings); no behaviour change
 #    2026-10-08 16:10 CDT - Initial version (v1.0)
 # ================================================================
@@ -122,7 +123,7 @@ def ping(ip, timeout):
     elif platform.system() == "Darwin":
         cmd = ["ping", "-c", "1", "-W", str(int(timeout * 1000)), ip]
     else:
-        cmd = ["ping", "-c", "1", "-W", str(max(1, int(round(timeout)))), ip]
+        cmd = ["ping", "-c", "1", "-W", str(max(1, round(timeout))), ip]
     try:
         out = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 3, check=False)
     except (OSError, subprocess.SubprocessError):
