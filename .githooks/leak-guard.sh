@@ -33,7 +33,9 @@ patterns=(
   "private key block|-----BEGIN ([A-Z]+ )*PRIVATE KEY-----"
 )
 if [[ -f "$local_list" ]]; then
-  while IFS= read -r p; do
+  while IFS= read -r p || [[ -n "$p" ]]; do
+    p="${p%$'\r'}"                  # Notepad saves CRLF; a stray \r would make every pattern unmatchable
+    p="${p#$'\xef\xbb\xbf'}"           # same for a UTF-8 byte order mark on the first line
     [[ -z "$p" || "$p" == \#* ]] && continue
     patterns+=("local deny list|$p")
   done < "$local_list"
