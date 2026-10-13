@@ -1,6 +1,8 @@
 *.log
 .DS_Store
 __pycache__/
+.pytest_cache/
+.ruff_cache/
 *.tmp
 *.env
 *.key
@@ -15,3 +17,4 @@ secrets.log
 *.p12
 id_rsa*
 id_ed25519*
+.githooks/leak-guard.local
