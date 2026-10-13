@@ -8,6 +8,7 @@ Sanitized mirror of the private engineering log. Newest first. Addressing uses R
 - Profile `pushscripts`: choose the target repo (menu, or `-Repo` with tab completion); public repos block staged `.nopush` files and need the repo name typed before committing.
 - Faire config read once per run and cached; profile `reload` folded into Update-Profile; lint pass (PSScriptAnalyzer clean, ruff clean).
 - Empty placeholder folders removed; README now lists only what is published; .gitignore extended for tool configs and secret material.
+- README rebuilt around the lab: topology diagram, stack by layer, and problems worked through. 2026-05-25 entry corrected (802.1X turned out not to be required); original text kept struck through.
 
 ## 2026-07-04
 - Session opened; standing conventions reaffirmed.
@@ -81,7 +82,8 @@ Sanitized mirror of the private engineering log. Newest first. Addressing uses R
 
 ## 2026-05-25
 - SIEM manager deployed manager-only (indexer/dashboard deferred pending RAM); API credentials rotated safely; 3 agents enrolled; container agent ownership bug root-caused + fixed; clean-base snapshot.
-- ISP 802.1X EAP-TLS discovered on fiber gateway — direct replacement dead; IP-passthrough architecture adopted; hypervisor port map locked.
+- ~~ISP 802.1X EAP-TLS discovered on fiber gateway — direct replacement dead; IP-passthrough architecture adopted;~~ hypervisor port map locked.
+  - Correction (2026-10-12): the gateway only appeared to require 802.1X. The ISP technician later confirmed it was not required, and the ISP gateway was replaced directly (see 2026-05-27).
 
 ## 2026-05-23
 - Dual-NIC + storage expansion on hypervisor; edge router VM deployed. Bridge loop incident root-caused → loopback detection enabled on core switch. Netmask default lesson logged.
