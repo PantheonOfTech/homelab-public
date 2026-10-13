@@ -5,3 +5,13 @@ __pycache__/
 *.env
 *.key
 *.pem
+
+# Tool data that must never be published
+cuairt.json
+secrets.log
+*.glas
+*.bak
+*.pfx
+*.p12
+id_rsa*
+id_ed25519*

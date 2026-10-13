@@ -1,0 +1,17 @@
+{
+  "subnet": "192.0.2.0/24",
+  "timeout": 1.0,
+  "wazuh": {
+    "url": "https://192.0.2.50:55000",
+    "verify_tls": true,
+    "ca_file": null,
+    "cert_sha256": null
+  },
+  "hosts": [
+    { "name": "hypervisor", "role": "Virtualisation host", "ip": "192.0.2.10", "ports": [22, 8006] },
+    { "name": "siem", "role": "Wazuh manager", "ip": "192.0.2.50", "ports": [22, 443, 1514, 1515, 55000] },
+    { "name": "dc", "role": "Domain controller", "ip": "192.0.2.60", "ports": [53, 88, 389, 445], "agent": "dc01" },
+    { "name": "workstation", "role": "Windows workstation", "ip": null, "mac": "00:00:5e:00:53:01" },
+    { "name": "nas", "role": "Storage, powered off for maintenance", "ip": "192.0.2.20", "ports": [22, 443], "expect": "down" }
+  ]
+}

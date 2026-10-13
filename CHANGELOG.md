@@ -1,6 +1,14 @@
 # Changelog
 Sanitized mirror of the private engineering log. Newest first. Addressing uses RFC5737 doc ranges; hosts are role placeholders.
 
+## 2026-10-12
+- Code/ published: shared PowerShell profile, Faire (scheduled watch scripts, alerts via Windows event log), Glas (AES-256/HMAC + DPAPI secrets), Seala (header stamper, PowerShell + Python), Cuairt (read-only lab sweep), ClearCache. Authored clean from the private repo; per-tool READMEs added.
+- Seala 1.2.0 / seala.py 1.1: header owner from SEALA_OWNER, git user.name or login name instead of hard-coded.
+- Glas secrets log and Faire backup defaults moved out of Documents (Controlled Folder Access blocks PowerShell writes there).
+- Profile `pushscripts`: choose the target repo (menu, or `-Repo` with tab completion); public repos block staged `.nopush` files and need the repo name typed before committing.
+- Faire config read once per run and cached; profile `reload` folded into Update-Profile; lint pass (PSScriptAnalyzer clean, ruff clean).
+- Empty placeholder folders removed; README now lists only what is published; .gitignore extended for tool configs and secret material.
+
 ## 2026-07-04
 - Session opened; standing conventions reaffirmed.
 

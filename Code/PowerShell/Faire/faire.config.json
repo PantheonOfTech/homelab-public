@@ -1,0 +1,13 @@
+{
+    "FailedLogonWindowMinutes":  60,
+    "FailedLogonThreshold":  10,
+    "DiskMinFreePercent":  15,
+    "TempOlderThanDays":  7,
+    "LogRetentionDays":  90,
+    "BackupPaths":  [
+                        "%USERPROFILE%\\Documents\\Scripts"
+                    ],
+    "BackupDestination":  "%LOCALAPPDATA%\\Faire\\Backups",
+    "BackupKeep":  14,
+    "WebhookUrl":  ""
+}
