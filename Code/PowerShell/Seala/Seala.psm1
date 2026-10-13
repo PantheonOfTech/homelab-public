@@ -5,8 +5,9 @@
 #  Suite: Seala (Irish: seal)
 #  Role: Module: Set-ScriptHeader (alias seala)
 #  Runs: On demand; autoloads from Program Files module path
-#  Last Modified: 2026-10-12 17:30 CDT
+#  Last Modified: 2026-10-12 22:45 CDT
 #  Changelog (newest first):
+#    2026-10-12 22:45 CDT - v1.2.1: private Build-Header renamed Format-SealaHeader (approved verb, PSScriptAnalyzer); no behaviour change
 #    2026-10-12 17:30 CDT - v1.2.0: owner comes from SEALA_OWNER, git user.name, or the login name (no longer hard-coded)
 #    2026-10-03 18:39 CDT - v1.1.1: verify write on disk, report FAILED instead of false success; clearer -WhatIf wording
 #    2026-10-03 17:19 CDT - Canonical field order (Company, Suite, Role, Runs)
@@ -75,7 +76,7 @@ function ConvertFrom-Header ([string]$Body) {
     [pscustomobject]@{ Fields = $fields; Log = $log }
 }
 
-function Build-Header ([string]$Name, $Fields, [string[]]$Log, [string]$Stamp, [string]$NL) {
+function Format-SealaHeader ([string]$Name, $Fields, [string[]]$Log, [string]$Stamp, [string]$NL) {
     $out = New-Object System.Collections.Generic.List[string]
     $out.Add("<# $Rule")
     $out.Add("####   Intellectual Property of $Owner ####")
@@ -225,7 +226,7 @@ function Set-ScriptHeader {
 
                 $log.Insert(0, "$stamp - $entry")
                 $keep   = @($log | Select-Object -First $MaxChangelog)
-                $header = Build-Header -Name $file.Name -Fields $fields -Log $keep -Stamp $stamp -NL $nl
+                $header = Format-SealaHeader -Name $file.Name -Fields $fields -Log $keep -Stamp $stamp -NL $nl
                 $new    = $shebang + $header + $rest
 
                 $verb = if ($action -eq 'Added') { 'add a header to' } else { 'update the header in' }
