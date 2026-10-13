@@ -2,6 +2,10 @@
 Sanitized mirror of the private engineering log. Newest first. Addressing uses RFC5737 doc ranges; hosts are role placeholders.
 
 ## 2026-10-12
+- CI added (`.github/workflows/ci.yml`): leak guard over every tracked file, gitleaks over full history on push, ruff + pytest, PSScriptAnalyzer + Pester on a Windows runner. Actions SHA-pinned, read-only token, no persisted checkout credentials, Dependabot for pin updates.
+- Leak guard moved into the repo (`.githooks/`) so it is versioned and reviewable; real host names moved to an untracked local deny list. CGNAT (Tailscale) range and private key blocks added.
+- Tests added: 17 pytest cases (cuairt inventory validation and exit codes, seala stamping, rollover and dry run), 7 Pester cases (Glas round trip, wrong password and tamper rejection, header, exports).
+- cuairt 1.0.2 / seala 1.1.1: lint fixes for current ruff defaults; no behaviour change.
 - Code/ published: shared PowerShell profile, Faire (scheduled watch scripts, alerts via Windows event log), Glas (AES-256/HMAC + DPAPI secrets), Seala (header stamper, PowerShell + Python), Cuairt (read-only lab sweep), ClearCache. Authored clean from the private repo; per-tool READMEs added.
 - Seala 1.2.0 / seala.py 1.1: header owner from SEALA_OWNER, git user.name or login name instead of hard-coded.
 - Glas secrets log and Faire backup defaults moved out of Documents (Controlled Folder Access blocks PowerShell writes there).

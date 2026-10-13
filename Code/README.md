@@ -27,7 +27,7 @@ Code/
 - **ASCII only.** Windows PowerShell 5.1 misreads UTF-8 files that have no BOM, so the .ps1/.psm1 files stay plain ASCII.
 - **Preview before change.** The installers and most commands that modify things support `-WhatIf` / `-Confirm` (PowerShell) or `--dry-run` (Python).
 - **Help lives in the code.** Public PowerShell commands have comment-based help (`Get-Help <command> -Examples`), and Python tools have `--help`.
-- **Linted.** PowerShell passes PSScriptAnalyzer's default rules at Warning and Error level. Python is checked with ruff.
+- **Linted and tested in CI.** PSScriptAnalyzer (Warning and Error) and ruff run on every push, along with the tests in [`tests/`](../tests). Tool versions are pinned in the [workflow](../.github/workflows/ci.yml).
 
 ## Sanitization
 

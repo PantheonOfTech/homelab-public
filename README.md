@@ -1,5 +1,7 @@
 # homelab-public
 
+[![CI](https://github.com/PantheonOfTech/homelab-public/actions/workflows/ci.yml/badge.svg)](https://github.com/PantheonOfTech/homelab-public/actions/workflows/ci.yml)
+
 > Part of **TechPanthéon**: purple-team homelab, detection engineering, and 3D-printed hardware.
 
 I run a self-hosted lab at home that I treat like a small production environment. It has a Proxmox VE hypervisor, a SIEM with agents across the lab, an Active Directory domain, a ticketing system, and a two-switch network, and I use it to practice SOC work, detection engineering and infrastructure automation on real systems instead of tutorials.
@@ -70,16 +72,23 @@ These come from the [changelog](CHANGELOG.md), which has the full history.
 | Path | Contents |
 |------|----------|
 | [`Code/`](Code/README.md) | PowerShell and Python tooling: a shared profile with SOC triage helpers, **Faire** (scheduled watch scripts that alert through the Windows event log), **Glas** (AES-256/HMAC and DPAPI secrets), **Seala** (script header stamper), **Cuairt** (read-only lab sweep with Wazuh agent state) |
+| [`tests/`](tests) | pytest for cuairt and seala, Pester for Glas |
+| [`.githooks/`](.githooks/leak-guard.sh) | The leak guard, versioned with the repo so it can be reviewed |
+| [`.github/workflows/ci.yml`](.github/workflows/ci.yml) | CI that runs on every push |
 | [`CHANGELOG.md`](CHANGELOG.md) | Sanitized mirror of the private engineering log |
 
 Each tool folder has its own README with install, usage and security notes.
+
+## Checks
+
+Every push runs [CI](.github/workflows/ci.yml): the leak guard over every tracked file, gitleaks over the full history, ruff and pytest for the Python tools, and PSScriptAnalyzer and Pester on a Windows runner for the PowerShell. Actions are pinned to commit SHAs, the workflow token is read-only, and Dependabot proposes the pin updates.
 
 ## How I run it
 
 Everything is self-hosted and local first, with no telemetry. I run llama.cpp locally instead of using cloud inference. Git owns configuration and Obsidian owns knowledge. Anything destructive gets a read-only pass first and an explicit confirmation before it runs, and if something can be automated, I automate it.
 
 ## Sanitization
-Internal addressing is swapped for RFC 5737 documentation ranges (`192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`) and host names are replaced with role names. User paths, real inventories and anything tied to an employer or client stay in the private repo. A pre-commit leak guard blocks private addressing, MACs, key fingerprints and secret file types.
+Internal addressing is swapped for RFC 5737 documentation ranges (`192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`) and host names are replaced with role names. User paths, real inventories and anything tied to an employer or client stay in the private repo. The [leak guard](.githooks/leak-guard.sh) blocks private and CGNAT addressing, MACs, key fingerprints, private key blocks and secret file types. It runs as the pre-commit hook (`git config core.hooksPath .githooks`) and again in CI. Real host names go in an untracked local deny list, so the list itself never gets published.
 
 ## License
 MIT, see [LICENSE](LICENSE).
