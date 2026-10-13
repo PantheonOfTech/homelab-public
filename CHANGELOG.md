@@ -6,6 +6,7 @@ Sanitized mirror of the private engineering log. Newest first. Addressing uses R
 - Leak guard moved into the repo (`.githooks/`) so it is versioned and reviewable; real host names moved to an untracked local deny list. CGNAT (Tailscale) range and private key blocks added.
 - Tests added: 17 pytest cases (cuairt inventory validation and exit codes, seala stamping, rollover and dry run), 7 Pester cases (Glas round trip, wrong password and tamper rejection, header, exports).
 - cuairt 1.0.2 / seala 1.1.1: lint fixes for current ruff defaults; no behaviour change.
+- Wording tightened on three older entries for the public mirror.
 - Code/ published: shared PowerShell profile, Faire (scheduled watch scripts, alerts via Windows event log), Glas (AES-256/HMAC + DPAPI secrets), Seala (header stamper, PowerShell + Python), Cuairt (read-only lab sweep), ClearCache. Authored clean from the private repo; per-tool READMEs added.
 - Seala 1.2.0 / seala.py 1.1: header owner from SEALA_OWNER, git user.name or login name instead of hard-coded.
 - Glas secrets log and Faire backup defaults moved out of Documents (Controlled Folder Access blocks PowerShell writes there).
@@ -58,7 +59,7 @@ Sanitized mirror of the private engineering log. Newest first. Addressing uses R
 
 ## 2026-06-14
 - Meshtastic selected over MeshCore for SOC-logged home mesh (MQTT maturity). Portable LoRa terminal locked: nRF52840 platform, I2C keyboard, e-ink, LiFePO4, RF-switched antennas (no hot-switching).
-- CAD: NURBS modeler trial started; Fusion 360 deferred to CNC CAM (free license prohibits commercial use — conflicts with sales pipeline).
+- CAD: NURBS modeler trial started; Fusion 360 deferred to CNC CAM (license terms).
 
 ## 2026-06-13
 - Desktop CNC purchase gate set (spindle RPM + work area verification required); toolchain KiCad → FlatCAM → Gcode.
@@ -72,14 +73,14 @@ Sanitized mirror of the private engineering log. Newest first. Addressing uses R
 - NAS physically relocated — drive seating verification flagged for next power-up.
 
 ## 2026-06-10
-- Used FDM printer acquired (CoreXY, ABL); cheap-FDM-first revenue strategy, premium printer deferred.
+- Used FDM printer acquired (CoreXY, ABL); premium printer deferred.
 
 ## 2026-06-09
 - Structured network audit opened: inventory recon, per-host health, posture (service scans, SIEM compliance API, agent connectivity, DNS path). SIEM VM blockers documented.
 - Ticketing evaluation started; heavier stacks RAM-blocked.
 
 ## 2026-05-28
-- Post-migration SIEM agent recovery: 3 agents repointed to new manager address (per-platform methods incl. container dual-fix); 2 fresh enrolls (hypervisor + work endpoint).
+- Post-migration SIEM agent recovery: 3 agents repointed to new manager address (per-platform methods incl. container dual-fix); 2 fresh enrolls (hypervisor + one more endpoint).
 
 ## 2026-05-27
 - Subnet migration completed; ISP mesh gateway removed, temp edge router in place.
