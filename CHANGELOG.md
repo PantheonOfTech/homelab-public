@@ -6,6 +6,7 @@ Sanitized mirror of the private engineering log. Newest first. Addressing uses R
 - Leak guard moved into the repo (`.githooks/`) so it is versioned and reviewable; real host names moved to an untracked local deny list. CGNAT (Tailscale) range and private key blocks added.
 - Tests added: 17 pytest cases (cuairt inventory validation and exit codes, seala stamping, rollover and dry run), 7 Pester cases (Glas round trip, wrong password and tamper rejection, header, exports).
 - cuairt 1.0.2 / seala 1.1.1: lint fixes for current ruff defaults; no behaviour change.
+- README: AI use section added (Claude as engineering assistant, Co-Authored-By trailers); local-first wording narrowed to the lab itself.
 - Seala 1.2.1: private Build-Header renamed Format-SealaHeader (PSScriptAnalyzer approved verbs); no behaviour change.
 - Wording tightened on three older entries for the public mirror.
 - Code/ published: shared PowerShell profile, Faire (scheduled watch scripts, alerts via Windows event log), Glas (AES-256/HMAC + DPAPI secrets), Seala (header stamper, PowerShell + Python), Cuairt (read-only lab sweep), ClearCache. Authored clean from the private repo; per-tool READMEs added.

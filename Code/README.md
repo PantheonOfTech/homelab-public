@@ -29,6 +29,10 @@ Code/
 - **Help lives in the code.** Public PowerShell commands have comment-based help (`Get-Help <command> -Examples`), and Python tools have `--help`.
 - **Linted and tested in CI.** PSScriptAnalyzer (Warning and Error) and ruff run on every push, along with the tests in [`tests/`](../tests). Tool versions are pinned in the [workflow](../.github/workflows/ci.yml).
 
+## AI use
+
+Some of this code was written with Claude's help. See [AI use](../README.md#ai-use) in the main README for how that works and how those commits are marked.
+
 ## Sanitization
 
 These are clean copies of tools from a private repo. Real addresses, host names, user paths and anything tied to an employer or client have been removed. Example addresses use the RFC 5737 documentation ranges, and the example MAC uses the RFC 7042 documentation block.

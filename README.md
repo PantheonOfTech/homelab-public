@@ -85,7 +85,11 @@ Every push runs [CI](.github/workflows/ci.yml): the leak guard over every tracke
 
 ## How I run it
 
-Everything is self-hosted and local first, with no telemetry. I run llama.cpp locally instead of using cloud inference. Git owns configuration and Obsidian owns knowledge. Anything destructive gets a read-only pass first and an explicit confirmation before it runs, and if something can be automated, I automate it.
+The lab itself is self-hosted and local first, with no telemetry, and I run llama.cpp locally for inference inside the lab. Git owns configuration and Obsidian owns knowledge. Anything destructive gets a read-only pass first and an explicit confirmation before it runs, and if something can be automated, I automate it.
+
+## AI use
+
+I use Claude, Anthropic's AI assistant, as an engineering partner on this repo. It reviews the code, drafts changes like the leak guard, tests, CI workflow and documentation, and I decide what goes in. I read every change and run it on my own machine before pushing, lint and tests have to pass locally and in CI, and nothing destructive runs without my explicit confirmation. From October 2026 on, commits Claude helped write carry a `Co-Authored-By: Claude` trailer, so the history shows which ones they are. I'm accountable for everything here and can walk through any of it.
 
 ## Sanitization
 Internal addressing is swapped for RFC 5737 documentation ranges (`192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`) and host names are replaced with role names. User paths, real inventories and anything tied to an employer or client stay in the private repo. The [leak guard](.githooks/leak-guard.sh) blocks private and CGNAT addressing, MACs, key fingerprints, private key blocks and secret file types. It runs as the pre-commit hook (`git config core.hooksPath .githooks`) and again in CI. Real host names go in an untracked local deny list, so the list itself never gets published.
